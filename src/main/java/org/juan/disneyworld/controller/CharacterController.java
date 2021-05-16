@@ -25,7 +25,7 @@ import org.juan.disneyworld.entity.Character;
 import org.juan.disneyworld.entity.Movie;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/characters")
 @Slf4j
 public class CharacterController {
 
@@ -34,7 +34,7 @@ public class CharacterController {
 	@Autowired
 	private MovieService moviesService;
 	
-	@GetMapping(value = "characters")
+	@GetMapping
 	public ResponseEntity<List<Character>> listCharacters(){
 		
 		List<Character> characters = new ArrayList<>();
@@ -44,13 +44,13 @@ public class CharacterController {
 		return ResponseEntity.ok(characters);
 	}
 	
-	@PostMapping(value = "characters")
+	@PostMapping
 	public ResponseEntity<Character> createCharacter(@RequestBody Character character){
 		Character characterCreate =  characterService.createCharacter(character);
         return ResponseEntity.status(HttpStatus.CREATED).body(characterCreate);
     }
 	
-	@PutMapping(value = "characters/{id}")
+	@PutMapping(value = "/{id}")
     public ResponseEntity<Character> updateCharacter(@PathVariable("id") Long id, @RequestBody Character character){
 		character.setId(id);
 		Character characterDB =  characterService.updateCharacter(character);
@@ -60,7 +60,7 @@ public class CharacterController {
         return ResponseEntity.ok(characterDB);
     }
 	
-	 @DeleteMapping(value = "characters/{id}")
+	 @DeleteMapping(value = "/{id}")
 	    public ResponseEntity<Character> deleteCharacter(@PathVariable("id") Long id){
 		 	Character characterDelete = characterService.deleteCharacter(id);
 	        if (characterDelete == null){
@@ -69,7 +69,7 @@ public class CharacterController {
 	        return ResponseEntity.ok(characterDelete);
 	    }
 	 
-	 @GetMapping(value = "characters/{id}")
+	 @GetMapping(value = "/{id}")
 	    public ResponseEntity<Character> getCharacter(@PathVariable("id") Long id) {
 		 Character character =  characterService.getCharacter(id);
 	        if (null==character){
@@ -82,7 +82,7 @@ public class CharacterController {
 	        return ResponseEntity.ok(character);
 	    }
 	 
-	 @GetMapping(value = "characters", params = "name")
+	 @GetMapping(params = "name")
 	    public ResponseEntity<List<Character>> getCharactersByName(@RequestParam(name = "name", required = true) String name) {
 		 List<Character> characters =  characterService.findByName(name);
 	        if (characters.isEmpty()){
@@ -91,7 +91,7 @@ public class CharacterController {
 	        return ResponseEntity.ok(characters);
 	    }
 	 
-	 @GetMapping(value = "characters", params = "age")
+	 @GetMapping(params = "age")
 	    public ResponseEntity<List<Character>> getCharactersByAge(@RequestParam(name = "age", required = true) int age) {
 		 List<Character> characters =  characterService.findByAge(age);
 	        if (characters.isEmpty()){
@@ -100,7 +100,7 @@ public class CharacterController {
 	        return ResponseEntity.ok(characters);
 	    }
 	 
-	 @GetMapping(value = "characters", params = "idMovie")
+	 @GetMapping(params = "idMovie")
 	    public ResponseEntity<List<Character>> getCharactersByMovieId(@RequestParam(name = "idMovie", required = true) Long idMovie) {
 		 Movie movie =  moviesService.getMovie(idMovie);
 	        if (movie == null)return ResponseEntity.notFound().build();
