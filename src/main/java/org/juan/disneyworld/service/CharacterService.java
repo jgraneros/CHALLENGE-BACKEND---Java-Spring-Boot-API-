@@ -15,5 +15,5 @@ public interface CharacterService {
 	//Busqueda de personajes
 	public List<Character> findByName(String name);
 	public List<Character> findByAge(int age);
-	public List<Character> findByMovie(Movie movie);
+	public List<Character> findByMovies(Movie movie);
 }

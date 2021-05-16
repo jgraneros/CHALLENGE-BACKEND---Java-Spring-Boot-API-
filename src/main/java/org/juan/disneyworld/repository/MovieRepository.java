@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends JpaRepository<Movie, Long>{
 	public List<Movie> findByTitle(String title);
 	public List<Movie> findByGenre(MovieGenre genre);
-	//public List<Movie> findByMovie(Order order);
+	public List<Movie> findByCharacters(org.juan.disneyworld.entity.Character character);
 }

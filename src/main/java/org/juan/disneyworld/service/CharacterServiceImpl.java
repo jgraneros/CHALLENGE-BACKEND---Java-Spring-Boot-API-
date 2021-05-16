@@ -67,8 +67,8 @@ public class CharacterServiceImpl implements CharacterService{
 	}
 
 	@Override
-	public List<Character> findByMovie(Movie movie) {
-		return null;//repo.findByMovie(movie);
+	public List<Character> findByMovies(Movie movie) {
+		return repo.findByMovies(movie);
 	}
 	
 

@@ -17,6 +17,6 @@ public interface MovieService {
 	//Busqueda de peliculas
 	public List<Movie> findByName(String name);
 	public List<Movie> findByGenre(MovieGenre genre);
-	public List<Movie> findByMovie(Order order);
+	public List<Movie> findByCharacters(Character character);
 
 }

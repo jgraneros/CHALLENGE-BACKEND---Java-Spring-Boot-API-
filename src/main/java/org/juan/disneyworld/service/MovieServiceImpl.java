@@ -70,9 +70,12 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public List<Movie> findByMovie(Order order) {
-		return null;//repo.findByMovie(order);
+	public List<Movie> findByCharacters(Character character) {
+		// TODO Auto-generated method stub
+		return repo.findByCharacters(character);
 	}
+
+	
 	
 	
 	
